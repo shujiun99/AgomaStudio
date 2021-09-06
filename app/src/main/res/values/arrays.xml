@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="EventCategories">
+        <item>Charity Fair</item>
+        <item>Wheelchair Repairing</item>
+        <item>Driving License</item>
+        <item>Register with Welfare Department</item>
+    </string-array>
+</resources>

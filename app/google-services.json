@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "636645528905",
+    "firebase_url": "https://agoma-assig-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "agoma-assig",
+    "storage_bucket": "agoma-assig.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636645528905:android:4b7ccf3b0d03c12ad57698",
+        "android_client_info": {
+          "package_name": "com.example.agomastudio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636645528905-4pq5ejcm9i4hf47kkvicj2qmu1psd99i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLeBkYNQzd2dhkIZkCHodWiURMiIHop6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636645528905-4pq5ejcm9i4hf47kkvicj2qmu1psd99i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/providerEventFragment">
+
+    <fragment
+        android:id="@+id/providerEventFragment"
+        android:name="com.example.agomastudio.ProviderEventFragment"
+        android:label="fragment_provider_event"
+        tools:layout="@layout/fragment_provider_event" >
+        <action
+            android:id="@+id/action_providerEventFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+        <action
+            android:id="@+id/action_providerEventFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/providerHelpFragment"
+        android:name="com.example.agomastudio.ProviderHelpFragment"
+        android:label="fragment_provider_help"
+        tools:layout="@layout/fragment_provider_help" />
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.agomastudio.AddEventFragment"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" />
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.example.agomastudio.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/fragment_event_detail" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+</navigation>
