@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -23,6 +24,7 @@ class ProviderEventFragment : Fragment() {
     private lateinit var newArrayList: ArrayList<Event>
     private lateinit var viewModel : ProviderEventViewModel
     private lateinit var dbref: DatabaseReference
+    private val nav by lazy { findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +42,8 @@ class ProviderEventFragment : Fragment() {
                 viewModel.onNavigatedToSearch()
             }
         })
-        
+
+
         newRecyclerView = binding.recyclerView
         newRecyclerView.layoutManager = LinearLayoutManager(requireActivity())
         newRecyclerView.setHasFixedSize(true)
@@ -48,14 +51,11 @@ class ProviderEventFragment : Fragment() {
         newArrayList = arrayListOf<Event>()
         getEventData()
 
-
         return binding.root
     }
 
     private fun getEventData() {
         dbref = FirebaseDatabase.getInstance().getReference("Event")
-
-
         dbref.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
@@ -72,28 +72,10 @@ class ProviderEventFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-
         })
+        Log.i("My", newArrayList.size.toString()+"Test")
 
 
-       /* var adapter = EventAdapter(newArrayList)
-        newRecyclerView.adapter = adapter
-
-        adapter.setOnClickListener(object: EventAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-                *//* viewModel.navigateToSearch.observe(viewLifecycleOwner,
-                     Observer<Boolean>{ navigate ->
-                         if(navigate){
-                             val navController = findNavController()
-                             navController.navigate(R.id.action_providerEventFragment_to_eventDetailFragment)
-                             viewModel.onNavigatedToSearch()
-                         }
-                     })*//*
-
-                //Navigation.findNavController(it).navigate(R.id.action_providerEventFragment_to_eventDetailFragment)
-            }
-
-        })*/
     }
 
     companion object {

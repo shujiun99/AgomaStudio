@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.agomastudio.Data.Event
@@ -47,7 +49,11 @@ class EventAdapter(private val eventList:ArrayList<Event>):
                 Glide.with(holder.photo.context).load(uri).into(holder.photo)
             }
         })
-
+        holder.itemView.setOnClickListener(){
+            val name: String = item.name
+            val bundle = bundleOf(Pair("name",name))
+            Navigation.findNavController(it).navigate(R.id.action_providerEventFragment_to_eventDetailFragment,bundle)
+        }
     }
 
     override fun getItemCount(): Int {
