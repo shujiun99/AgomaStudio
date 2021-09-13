@@ -6,4 +6,15 @@
         <item>Driving License</item>
         <item>Register with Welfare Department</item>
     </string-array>
+    <string-array name="EventCategoriessearch">
+        <item>All</item>
+        <item>Charity Fair</item>
+        <item>Wheelchair Repairing</item>
+        <item>Driving License</item>
+        <item>Register with Welfare Department</item>
+    </string-array>
+    <string-array name="AllOrMe">
+        <item>All</item>
+        <item>Me</item>
+    </string-array>
 </resources>

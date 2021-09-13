@@ -5,6 +5,8 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.util.Base64
@@ -15,12 +17,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.agomastudio.Data.Event
 import com.example.agomastudio.databinding.FragmentAddEventBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,6 +33,7 @@ class AddEventFragment : Fragment(){
     private lateinit var img : ImageView
     lateinit var imgUri: Uri
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +41,7 @@ class AddEventFragment : Fragment(){
         binding = FragmentAddEventBinding.inflate(inflater)
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("Event")
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Add Event"
         binding.imEvent.setOnClickListener(){
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -88,6 +92,7 @@ class AddEventFragment : Fragment(){
             val time = binding.btnTime.text.toString()
             val description = binding.edDescription.text.toString().trim()
             val category = binding.spnCategory.selectedItem as String
+            val address = binding.tvaddress.text.toString()
             img = binding.imEvent
 
 
@@ -132,44 +137,67 @@ class AddEventFragment : Fragment(){
             }
 
             val id = name + date
-            var status = "Pending"
             var existsss = false
-            //status = checkEvent(name)
-            myRef.child(name).get().addOnSuccessListener{
-                if(it.exists()){
-                    status = "checked"
-                    existsss = true
+            myRef.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if(snapshot.exists()){
+                        Log.i("My","Database load")
+                        for(eventSnapshot in snapshot.children){
+                            val event = eventSnapshot.getValue(Event::class.java)
+                            if(event?.id.equals(id)){
+                                Log.i("My","id get")
+                                existsss = true
+                                Log.i("My", existsss.toString())
+                            }
+                        }
+
+                    }
                 }
-                else{
-                    status = "not match"
+                override fun onCancelled(error: DatabaseError) {
+                    Log.i("My","Failed to Load data")
                 }
-            }.addOnFailureListener{ e->
-                Log.i("MyTag",e.toString())
+            })
+            var status = "Pending"
+
+            if(address == ""){
+                toast("Invalid Address")
+                return@setOnClickListener
             }
 
+            var longitude = ""
+            var latitude = ""
+
+            val geoCoder = Geocoder(requireContext(), Locale.getDefault())
+            Log.i("My","ready get geo")
+            val addList = geoCoder.getFromLocationName(address,1)
+            Log.i("My","done get geo")
+            try{
+                if(addList != null && addList.size > 0){
+                    val add = addList.get(0) as Address
+                    Log.i("My",add.latitude.toString() + " " + add.longitude.toString())
+                    longitude = add.longitude.toString()
+                    latitude = add.latitude.toString()
+                }
+            }catch(e: IOException){
+                Log.e("My","Unable to connect to GeoCoder",e)
+            }
+            if(longitude == "" || latitude == ""){
+                toast("Invalid Address")
+                return@setOnClickListener
+            }
 
             if(existsss){
                 toast("The Event Exists!!")
                 return@setOnClickListener
+            }else{
+                val photo = fileName.toString()
+                val providerId = "providerA"
+                val event = Event(id,name,date,time,description,category,status,photo,longitude,latitude,address,providerId)
+                myRef.child(id).setValue(event)
+                requireActivity().onBackPressed()
             }
-            val photo = fileName.toString()
-            val event = Event(name,date,time,description,category,status,photo)
-            myRef.child(name).setValue(event)
-            requireActivity().onBackPressed()
         }
         return binding.root
-    }
-
-    private fun checkEvent(name: String) : String{
-        var status = "unsucess"
-        val database: DatabaseReference
-        database = FirebaseDatabase.getInstance().getReference("Event")
-        database.child(name).get().addOnSuccessListener {
-            if(it.exists()){
-                status = "success"
-            }
-        }
-        return status
     }
 
     private fun toast(text: String) {

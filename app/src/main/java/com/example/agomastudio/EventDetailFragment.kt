@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
@@ -29,15 +30,13 @@ class EventDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentEventDetailBinding.inflate(inflater)
-        val name = arguments?.getString("name")
-        binding.tvGetName.text = name
-        Log.i("My",name.toString()+"Check")
+        val ids = arguments?.getString("id")
         val dbref: DatabaseReference
         dbref = FirebaseDatabase.getInstance().getReference("Event")
         var check:String = ""
-        Log.i("My",name.toString())
-        if(name?.isNotEmpty()!!){
-            check=name
+        Log.i("My",id.toString())
+        if(ids?.isNotEmpty()!!){
+            check=ids
             dbref.child(check).get().addOnSuccessListener {
                 if(it.exists()){
                     Log.i("My","success")
@@ -45,6 +44,9 @@ class EventDetailFragment : Fragment() {
                     val time = it.child("time").value
                     val description = it.child("description").value
                     val imgUri = it.child("photo").value
+                    val address = it.child("address").value
+                    binding.tvGetName.text = it.child("name").value.toString()
+                    (activity as AppCompatActivity).supportActionBar?.title = it.child("name").value.toString()
                     imgUr = imgUri.toString()
                     val storageReference = FirebaseStorage.getInstance().reference.child("images/$imgUri")
                     Log.i("My",storageReference.toString())
@@ -58,6 +60,11 @@ class EventDetailFragment : Fragment() {
                     binding.tvGetDescription.text = description.toString()
                     binding.tvGetTime.text = time.toString()
                     binding.tvGetDate.text = date.toString()
+                    binding.tvGetAddress.text = address.toString()
+                    if(it.child("providerId").value != "providerA"){
+                        binding.btnUpdate.visibility = View.GONE
+                        binding.btnDelete.visibility = View.GONE
+                    }
                 }
             }
         }
@@ -67,7 +74,7 @@ class EventDetailFragment : Fragment() {
             builder.setTitle(getString(R.string.ConfirmDetele))
             builder.setMessage(getString(R.string.DeleteMessage))
             builder.setPositiveButton("Delete", DialogInterface.OnClickListener{dialog,id ->
-                deleteData(name)
+                deleteData(ids)
                 dialog.cancel()
             })
             builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
@@ -78,8 +85,8 @@ class EventDetailFragment : Fragment() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            val name: String = name
-            val bundle = bundleOf(Pair("name",name))
+            val id: String = ids
+            val bundle = bundleOf(Pair("id",id))
             Navigation.findNavController(it).navigate(R.id.action_eventDetailFragment_to_updateEventFragment,bundle)
         }
 

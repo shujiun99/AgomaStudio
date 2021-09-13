@@ -50,14 +50,18 @@ class EventAdapter(private val eventList:ArrayList<Event>):
             }
         })
         holder.itemView.setOnClickListener(){
-            val name: String = item.name
-            val bundle = bundleOf(Pair("name",name))
+            val id: String = item.id
+            val bundle = bundleOf(Pair("id",id))
             Navigation.findNavController(it).navigate(R.id.action_providerEventFragment_to_eventDetailFragment,bundle)
         }
     }
 
     override fun getItemCount(): Int {
         return eventList.size
+    }
+
+    fun setEventDetail(eventDetails: List<Event>){
+        notifyDataSetChanged()
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

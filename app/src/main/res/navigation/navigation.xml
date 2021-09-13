@@ -48,4 +48,18 @@
             android:name="name"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/profileProviderFragment"
+        android:name="com.example.agomastudio.ProfileProviderFragment"
+        android:label="fragment_profile_provider"
+        tools:layout="@layout/fragment_profile_provider" />
+    <fragment
+        android:id="@+id/providerServiceFragment"
+        android:name="com.example.agomastudio.ProviderServiceFragment"
+        android:label="fragment_provider_service"
+        tools:layout="@layout/fragment_provider_service" />
+    <fragment
+        android:id="@+id/addProviderFragment"
+        android:name="com.example.agomastudio.AddProviderFragment"
+        android:label="AddProviderFragment" />
 </navigation>

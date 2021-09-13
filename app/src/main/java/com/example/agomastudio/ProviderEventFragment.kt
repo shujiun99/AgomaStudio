@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.AdapterView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.agomastudio.Data.Event
 import com.example.agomastudio.databinding.FragmentProviderEventBinding
 import com.google.firebase.database.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class ProviderEventFragment : Fragment() {
@@ -31,7 +36,7 @@ class ProviderEventFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentProviderEventBinding.inflate(inflater)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Event"
         viewModel = ViewModelProvider(this).get(ProviderEventViewModel::class.java)
         binding.viewModel = viewModel
         viewModel.navigateToSearch.observe(viewLifecycleOwner,
@@ -51,8 +56,57 @@ class ProviderEventFragment : Fragment() {
         newArrayList = arrayListOf<Event>()
         getEventData()
 
+        binding.filter.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(v: View?) {
+                val cate = binding.spCategory.selectedItem as String
+                val me = binding.spMy.selectedItem as String
+                val date = LocalDate.now()
+                dbref = FirebaseDatabase.getInstance().getReference("Event")
+                dbref.addValueEventListener(object: ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if(snapshot.exists()){
+                            newArrayList.clear()
+                            Log.i("My","come in filter")
+                            for(eventSnapshot in snapshot.children){
+                                val event = eventSnapshot.getValue(Event::class.java)
+                                val list = event?.date!!.split("-")
+                                Log.i("My",list[2] + list[1] + list[0])
+                                val eventDate = LocalDate.of(list[2].toInt(),list[1].toInt(),list[0].toInt())
+                                if(cate == event?.category){
+                                    if(me == "All"){
+                                        if(date.isBefore(eventDate)){
+                                            newArrayList.add(event!!)
+                                        }
+                                    }
+                                    else{
+                                        if(event?.providerId == "providerA"){
+                                            if(eventDate.isBefore(date)){
+                                                newArrayList.add(event!!)
+                                            }
+                                        }
+                                    }
+                                }
+                                if(cate == "All"){
+                                    if(date.isBefore(eventDate)) {
+                                        newArrayList.add(event!!)
+                                    }
+                                }
+                            }
+                            newRecyclerView.adapter = EventAdapter(newArrayList)
+                            Log.i("My", newArrayList.size.toString())
+                        }
+                    }
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+            }
+
+        })
+
         return binding.root
     }
+
 
     private fun getEventData() {
         dbref = FirebaseDatabase.getInstance().getReference("Event")
@@ -63,7 +117,13 @@ class ProviderEventFragment : Fragment() {
                     Log.i("My","come in")
                     for(eventSnapshot in snapshot.children){
                         val event = eventSnapshot.getValue(Event::class.java)
-                        newArrayList.add(event!!)
+                        val date = LocalDate.now()
+                        val list = event?.date!!.split("-")
+                        Log.i("My",list[2] + list[1] + list[0])
+                        val eventDate = LocalDate.of(list[2].toInt(),list[1].toInt(),list[0].toInt())
+                        if(date.isBefore(eventDate)){
+                            newArrayList.add(event!!)
+                        }
                     }
                     newRecyclerView.adapter = EventAdapter(newArrayList)
                     Log.i("My", newArrayList.size.toString())
@@ -74,7 +134,6 @@ class ProviderEventFragment : Fragment() {
             }
         })
         Log.i("My", newArrayList.size.toString()+"Test")
-
 
     }
 
