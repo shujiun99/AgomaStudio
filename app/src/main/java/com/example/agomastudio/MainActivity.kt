@@ -1,5 +1,6 @@
 package com.example.agomastudio
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
@@ -11,7 +12,6 @@ import com.example.agomastudio.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController() }
 
     private lateinit var abc : AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,21 +19,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        abc = AppBarConfiguration(
-            setOf(R.id.providerEventFragment, R.id.providerHelpFragment,R.id.profileProviderFragment,R.id.providerServiceFragment),
-            binding.drawerLayout
-        )
+        binding.btnCheck.setOnClickListener{
+            val intent: Intent = Intent(this, ProviderActivity::class.java)
+            startActivity(intent)
+        }
 
-        setupActionBarWithNavController(nav, abc)
-        binding.navView.setupWithNavController(nav)
+        binding.btnnnn.setOnClickListener {
+            val intent: Intent = Intent(this, OKUActivity::class.java)
+            startActivity(intent)
+        }
 
-        //Access to navigation view's header
-        //val header = binding.navView.getHeaderView(0)
-        //header.findViewById<ImageView>(R.id.photo).setImageResource(R.drawable.hdni)
-        //header.findViewById<TextView>(R.id.name).text = "dhf"
+        binding.button22.setOnClickListener {
+            val intent: Intent = Intent(this, AdminActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    override fun onSupportNavigateUp():Boolean{
-        return nav.navigateUp(abc) || super.onSupportNavigateUp()
-    }
+
 }

@@ -57,6 +57,16 @@ class EventDetailFragment : Fragment() {
                             Glide.with(this@EventDetailFragment).load(uri).into(binding.imgEvent)
                         }
                     })
+                    val providerid = it.child("providerId").value.toString()
+                    val ref: DatabaseReference
+                    ref = FirebaseDatabase.getInstance().getReference("Provider")
+                    Log.i("My",providerid)
+                    ref.child(providerid).get().addOnSuccessListener {
+                        if(it.exists()){
+                            Log.i("My","Provider Get")
+                            binding.tvNgoName.text = it.child("name").value.toString()
+                        }
+                    }
                     binding.tvGetDescription.text = description.toString()
                     binding.tvGetTime.text = time.toString()
                     binding.tvGetDate.text = date.toString()

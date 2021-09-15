@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigationo"
+    app:startDestination="@id/OKUEventFragment">
+    <fragment
+        android:id="@+id/OKUEventFragment"
+        android:name="com.example.agomastudio.OKUEventFragment"
+        android:label="@string/event"
+        tools:layout="@layout/fragment_o_k_u_event" />
+</navigation>

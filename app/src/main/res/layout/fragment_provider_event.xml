@@ -33,7 +33,7 @@
             android:onClick="@{() -> viewModel.onFabClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -46,21 +46,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/event_item" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:text="Me"
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/spCategory"
-            app:layout_constraintStart_toEndOf="@+id/spCategory"
-            app:layout_constraintTop_toTopOf="@+id/spCategory" />
-
         <Spinner
             android:id="@+id/spCategory"
-            android:layout_width="170dp"
+            android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:entries="@array/EventCategoriessearch"
@@ -69,27 +57,26 @@
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
-        <Spinner
-            android:id="@+id/spMy"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:entries="@array/AllOrMe"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView10"
-            app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="@+id/textView10"
-            tools:ignore="SpeakableTextPresentCheck" />
-
         <TextView
             android:id="@+id/filter"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:background="@drawable/search"
-            app:layout_constraintBottom_toBottomOf="@+id/spMy"
-            app:layout_constraintStart_toEndOf="@+id/spMy"
-            app:layout_constraintTop_toTopOf="@+id/spMy"
-            app:layout_constraintVertical_bias="0.444" />
+            app:layout_constraintBottom_toBottomOf="@+id/spCategory"
+            app:layout_constraintStart_toEndOf="@+id/spCategory"
+            app:layout_constraintTop_toTopOf="@+id/spCategory"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <Button
+            android:id="@+id/btnhistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/history"
+            app:layout_constraintBottom_toBottomOf="@+id/spCategory"
+            app:layout_constraintStart_toEndOf="@+id/filter"
+            app:layout_constraintTop_toTopOf="@+id/spCategory"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -56,10 +56,13 @@ class ProviderEventFragment : Fragment() {
         newArrayList = arrayListOf<Event>()
         getEventData()
 
+        binding.btnhistory.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.providerHistoryFragment)
+        }
+
         binding.filter.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
                 val cate = binding.spCategory.selectedItem as String
-                val me = binding.spMy.selectedItem as String
                 val date = LocalDate.now()
                 dbref = FirebaseDatabase.getInstance().getReference("Event")
                 dbref.addValueEventListener(object: ValueEventListener{
@@ -73,22 +76,17 @@ class ProviderEventFragment : Fragment() {
                                 Log.i("My",list[2] + list[1] + list[0])
                                 val eventDate = LocalDate.of(list[2].toInt(),list[1].toInt(),list[0].toInt())
                                 if(cate == event?.category){
-                                    if(me == "All"){
+                                    if(event.status == "Approved"){
                                         if(date.isBefore(eventDate)){
                                             newArrayList.add(event!!)
-                                        }
-                                    }
-                                    else{
-                                        if(event?.providerId == "providerA"){
-                                            if(eventDate.isBefore(date)){
-                                                newArrayList.add(event!!)
-                                            }
                                         }
                                     }
                                 }
                                 if(cate == "All"){
                                     if(date.isBefore(eventDate)) {
-                                        newArrayList.add(event!!)
+                                        if(event.status == "Approved"){
+                                            newArrayList.add(event!!)
+                                        }
                                     }
                                 }
                             }
@@ -97,7 +95,7 @@ class ProviderEventFragment : Fragment() {
                         }
                     }
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
+
                     }
                 })
             }
@@ -122,7 +120,9 @@ class ProviderEventFragment : Fragment() {
                         Log.i("My",list[2] + list[1] + list[0])
                         val eventDate = LocalDate.of(list[2].toInt(),list[1].toInt(),list[0].toInt())
                         if(date.isBefore(eventDate)){
-                            newArrayList.add(event!!)
+                            if(event.status == "Approved"){
+                                newArrayList.add(event!!)
+                            }
                         }
                     }
                     newRecyclerView.adapter = EventAdapter(newArrayList)
@@ -130,7 +130,7 @@ class ProviderEventFragment : Fragment() {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
         })
         Log.i("My", newArrayList.size.toString()+"Test")

@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/providerHelpFragment"
         android:name="com.example.agomastudio.ProviderHelpFragment"
-        android:label="fragment_provider_help"
+        android:label="Help"
         tools:layout="@layout/fragment_provider_help" />
     <fragment
         android:id="@+id/addEventFragment"
@@ -51,15 +51,21 @@
     <fragment
         android:id="@+id/profileProviderFragment"
         android:name="com.example.agomastudio.ProfileProviderFragment"
-        android:label="fragment_profile_provider"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile_provider" />
     <fragment
         android:id="@+id/providerServiceFragment"
         android:name="com.example.agomastudio.ProviderServiceFragment"
-        android:label="fragment_provider_service"
+        android:label="Service"
         tools:layout="@layout/fragment_provider_service" />
     <fragment
         android:id="@+id/addProviderFragment"
         android:name="com.example.agomastudio.AddProviderFragment"
         android:label="AddProviderFragment" />
+    <fragment
+        android:id="@+id/providerHistoryFragment"
+        android:name="com.example.agomastudio.ProviderHistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_provider_history" />
+
 </navigation>

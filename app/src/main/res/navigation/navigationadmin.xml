@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigationadmin"
+    app:startDestination="@id/adminEventFragment">
+
+    <fragment
+        android:id="@+id/adminEventFragment"
+        android:name="com.example.agomastudio.AdminEventFragment"
+        android:label="@string/event"
+        tools:layout="@layout/fragment_admin_event" />
+    <fragment
+        android:id="@+id/adminHelpFragment"
+        android:name="com.example.agomastudio.AdminHelpFragment"
+        android:label="@string/help"
+        tools:layout="@layout/fragment_admin_help" />
+    <fragment
+        android:id="@+id/adminServiceFragment"
+        android:name="com.example.agomastudio.AdminServiceFragment"
+        android:label="@string/service"
+        tools:layout="@layout/fragment_admin_service" />
+</navigation>

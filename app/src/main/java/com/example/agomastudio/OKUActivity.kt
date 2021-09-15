@@ -7,25 +7,24 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.agomastudio.databinding.ActivityMainBinding
-import com.example.agomastudio.databinding.ActivityProviderBinding
+import com.example.agomastudio.databinding.ActivityOkuactivityBinding
 
-class ProviderActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProviderBinding
-    private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController() }
+class OKUActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOkuactivityBinding
+    private val nav by lazy { supportFragmentManager.findFragmentById(R.id.hostoku)!!.findNavController() }
     private lateinit var abc : AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProviderBinding.inflate(layoutInflater)
+        binding = ActivityOkuactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         abc = AppBarConfiguration(
-            setOf(R.id.providerEventFragment, R.id.providerHelpFragment,R.id.profileProviderFragment,R.id.providerServiceFragment),
-            binding.drawerLayout
+            setOf(R.id.OKUEventFragment),
+            binding.drawerOKULayout
         )
 
         setupActionBarWithNavController(nav, abc)
-        binding.navView.setupWithNavController(nav)
+        binding.navOKUView.setupWithNavController(nav)
 
         //Access to navigation view's header
         //val header = binding.navView.getHeaderView(0)

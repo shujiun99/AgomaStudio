@@ -13,8 +13,10 @@
         <item>Driving License</item>
         <item>Register with Welfare Department</item>
     </string-array>
-    <string-array name="AllOrMe">
+    <string-array name="EventCategoriesHist">
         <item>All</item>
-        <item>Me</item>
+        <item>Pending</item>
+        <item>Approved</item>
+        <item>Rejected</item>
     </string-array>
 </resources>

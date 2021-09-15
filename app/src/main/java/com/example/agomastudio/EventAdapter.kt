@@ -52,7 +52,7 @@ class EventAdapter(private val eventList:ArrayList<Event>):
         holder.itemView.setOnClickListener(){
             val id: String = item.id
             val bundle = bundleOf(Pair("id",id))
-            Navigation.findNavController(it).navigate(R.id.action_providerEventFragment_to_eventDetailFragment,bundle)
+            Navigation.findNavController(it).navigate(R.id.eventDetailFragment,bundle)
         }
     }
 

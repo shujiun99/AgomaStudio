@@ -7,31 +7,31 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.agomastudio.databinding.ActivityMainBinding
-import com.example.agomastudio.databinding.ActivityProviderBinding
+import com.example.agomastudio.databinding.ActivityAdminBinding
 
-class ProviderActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProviderBinding
-    private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController() }
+class AdminActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAdminBinding
+    private val nav by lazy { supportFragmentManager.findFragmentById(R.id.hostadmin)!!.findNavController() }
     private lateinit var abc : AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProviderBinding.inflate(layoutInflater)
+        binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         abc = AppBarConfiguration(
-            setOf(R.id.providerEventFragment, R.id.providerHelpFragment,R.id.profileProviderFragment,R.id.providerServiceFragment),
-            binding.drawerLayout
+            setOf(R.id.adminEventFragment, R.id.adminHelpFragment,R.id.adminServiceFragment),
+            binding.drawerAdminLayout
         )
 
         setupActionBarWithNavController(nav, abc)
-        binding.navView.setupWithNavController(nav)
+        binding.navAdminView.setupWithNavController(nav)
 
         //Access to navigation view's header
         //val header = binding.navView.getHeaderView(0)
         //header.findViewById<ImageView>(R.id.photo).setImageResource(R.drawable.hdni)
         //header.findViewById<TextView>(R.id.name).text = "dhf"
     }
+
     override fun onSupportNavigateUp():Boolean{
         return nav.navigateUp(abc) || super.onSupportNavigateUp()
     }
