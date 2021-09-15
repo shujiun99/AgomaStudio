@@ -7,4 +7,8 @@
         android:id="@+id/OKUEventFragment"
         android:title="Event"
         android:checkable="true"/>
+
+    <item
+        android:id="@+id/Logout"
+        android:title="@string/logout"/>
 </menu>

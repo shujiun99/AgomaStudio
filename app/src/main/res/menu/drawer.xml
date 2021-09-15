@@ -28,4 +28,8 @@
         android:id="@+id/providerServiceFragment"
         android:checkable="true"
         android:title="@string/service" />
+
+    <item
+        android:id="@+id/Logout"
+        android:title="@string/logout"/>
 </menu>

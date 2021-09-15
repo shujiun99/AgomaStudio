@@ -38,4 +38,10 @@
     <string name="history">History</string>
     <string name="status">Status</string>
     <string name="ngo_name">NGO Name</string>
+    <string name="email">Email</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="gender">Gender</string>
+    <string name="age">age</string>
+    <string name="logout">Logout</string>
 </resources>

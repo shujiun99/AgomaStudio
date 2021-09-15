@@ -19,4 +19,7 @@
         android:title="@string/help"
         android:checkable="true"/>
 
+    <item
+        android:id="@+id/Logout"
+        android:title="@string/logout"/>
 </menu>

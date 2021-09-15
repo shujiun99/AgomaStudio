@@ -1,17 +1,16 @@
 package com.example.agomastudio.Data
 
-data class Provider(
+data class OKU(
     val id: String,
     val name: String,
     val password: String,
-    val website: String,
+    val email: String,
+    val age: String,
+    val gender: String,
     val address: String,
-    val contact: String,
-    val objective:String,
-    val photo:String,
-    val email: String){
+    val photo: String
+){
     constructor() : this(
-        "",
         "",
         "",
         "",
