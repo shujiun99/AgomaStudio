@@ -1,5 +1,7 @@
 package com.example.agomastudio
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +34,8 @@ class ProviderActivity : AppCompatActivity() {
         binding = ActivityProviderBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FF6350")))
+
         abc = AppBarConfiguration(
             setOf(R.id.providerEventFragment, R.id.providerHelpFragment,R.id.profileProviderFragment,R.id.providerServiceFragment),
             binding.drawerLayout
@@ -39,6 +43,12 @@ class ProviderActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(nav, abc)
         binding.navView.setupWithNavController(nav)
+
+        binding.navView.menu.findItem(R.id.Logout).setOnMenuItemClickListener {
+            auth.signOut()
+            finish()
+            true
+        }
 
         val firebaseUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -64,7 +74,7 @@ class ProviderActivity : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+
                 }
 
             })

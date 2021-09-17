@@ -9,4 +9,8 @@
         android:name="com.example.agomastudio.OKUEventFragment"
         android:label="@string/event"
         tools:layout="@layout/fragment_o_k_u_event" />
+    <fragment
+        android:id="@+id/OKUProfileFragment"
+        android:name="com.example.agomastudio.OKUProfileFragment"
+        android:label="OKUProfileFragment" />
 </navigation>

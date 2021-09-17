@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout >
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imgEvent"
-        android:layout_width="124dp"
-        android:layout_height="121dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imgadEvent"
+            android:layout_width="124dp"
+            android:layout_height="121dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
-            android:id="@+id/srclView"
+            android:id="@+id/srcladView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:layout_editor_absoluteX="24dp">
+            tools:ignore="SpeakableTextPresentCheck">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -34,18 +34,18 @@
 
 
                 <TextView
-                    android:id="@+id/tvGetDate"
+                    android:id="@+id/tvadGetDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                    app:layout_constraintStart_toStartOf="@+id/tvGetName"
+                    app:layout_constraintStart_toStartOf="@+id/tadvGetName"
                     app:layout_constraintTop_toTopOf="@+id/textView23" />
 
                 <TextView
-                    android:id="@+id/tvGetName"
+                    android:id="@+id/tadvGetName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="56dp"
@@ -58,19 +58,19 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/tvGetTime"
+                    android:id="@+id/tvadGetTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView24"
-                    app:layout_constraintStart_toStartOf="@+id/tvGetDate"
+                    app:layout_constraintStart_toStartOf="@+id/tvadGetDate"
                     app:layout_constraintTop_toTopOf="@+id/textView24" />
 
 
                 <TextView
-                    android:id="@+id/tvGetDescription"
+                    android:id="@+id/tvadGetDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -81,27 +81,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
                 <Button
-                    android:id="@+id/btnDelete"
+                    android:id="@+id/btnRejectEv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Delete"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGetAddress" />
+                    android:layout_marginEnd="20dp"
+                    android:text="Reject"
+                    app:layout_constraintEnd_toStartOf="@+id/btnApproveEv"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGetadAddress" />
 
                 <Button
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/btnApproveEv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Update"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnDelete"
-                    app:layout_constraintStart_toEndOf="@+id/btnDelete"
-                    app:layout_constraintTop_toTopOf="@+id/btnDelete"
-                    app:layout_constraintVertical_bias="1.0" />
+                    android:layout_marginEnd="52dp"
+                    android:text="Approve"
+                    app:layout_constraintBottom_toBottomOf="@+id/btnRejectEv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/btnRejectEv"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/tvGetAddress"
+                    android:id="@+id/tvGetadAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -151,8 +152,8 @@
                     android:text="@string/address"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/tvGetDescription"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGetDescription" />
+                    app:layout_constraintStart_toStartOf="@+id/tvadGetDescription"
+                    app:layout_constraintTop_toBottomOf="@+id/tvadGetDescription" />
 
                 <TextView
                     android:id="@+id/textView27"
@@ -166,15 +167,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                 <Button
-                    android:id="@+id/btnOKUList"
+                    android:id="@+id/btnupdateeventSt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/oku_list"
-                    app:layout_constraintBottom_toBottomOf="@+id/btnUpdate"
-                    app:layout_constraintStart_toEndOf="@+id/btnUpdate"
-                    app:layout_constraintTop_toTopOf="@+id/btnUpdate"
-                    app:layout_constraintVertical_bias="0.0" />
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="116dp"
+                    android:text="Update"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGetadAddress" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -188,16 +188,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
                 <TextView
-                    android:id="@+id/tvNgoName"
+                    android:id="@+id/tvadNgoName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                    app:layout_constraintStart_toStartOf="@+id/tvGetTime"
+                    app:layout_constraintStart_toStartOf="@+id/tvadGetTime"
                     app:layout_constraintTop_toTopOf="@+id/textView10" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

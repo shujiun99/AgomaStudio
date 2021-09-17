@@ -1,15 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AdminEventFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout></layout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/clickEventPending"
+                android:layout_width="135dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/pending"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/clickApprovedEvent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/clickApprovedEvent"
+                android:layout_width="135dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/approved"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/clickEventPending"
+                app:layout_constraintStart_toEndOf="@+id/clickEventPending"
+                app:layout_constraintTop_toTopOf="@+id/clickEventPending" />
+
+            <TextView
+                android:id="@+id/clickRejectedEvent"
+                android:layout_width="135dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/rejected"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/clickApprovedEvent"
+                app:layout_constraintStart_toEndOf="@+id/clickApprovedEvent"
+                app:layout_constraintTop_toTopOf="@+id/clickApprovedEvent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvadminEvent"
+                android:layout_width="409dp"
+                android:layout_height="685dp"
+                android:layout_marginStart="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/admin_event" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

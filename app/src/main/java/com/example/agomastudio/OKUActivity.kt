@@ -32,12 +32,13 @@ class OKUActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         abc = AppBarConfiguration(
-            setOf(R.id.OKUEventFragment),
+            setOf(R.id.OKUEventFragment,R.id.OKUProfileFragment),
             binding.drawerOKULayout
         )
 
         binding.navOKUView.menu.findItem(R.id.Logout).setOnMenuItemClickListener {
             auth.signOut()
+            finish()
             true
         }
 

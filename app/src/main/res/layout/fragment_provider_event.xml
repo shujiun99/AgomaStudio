@@ -11,14 +11,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="@string/category"
             android:textColor="@color/black"
             android:textSize="17sp"
@@ -33,6 +34,7 @@
             android:onClick="@{() -> viewModel.onFabClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/plus"
             tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -71,7 +73,7 @@
             android:id="@+id/btnhistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="10dp"
             android:text="@string/history"
             app:layout_constraintBottom_toBottomOf="@+id/spCategory"
             app:layout_constraintStart_toEndOf="@+id/filter"

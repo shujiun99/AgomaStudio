@@ -67,5 +67,13 @@
         android:name="com.example.agomastudio.ProviderHistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_provider_history" />
+    <fragment
+        android:id="@+id/providerEventOListFragment"
+        android:name="com.example.agomastudio.ProviderEventOListFragment"
+        android:label="OKU List" />
+    <fragment
+        android:id="@+id/providerHelpDetailFragment"
+        android:name="com.example.agomastudio.ProviderHelpDetailFragment"
+        android:label="Help Detail" />
 
 </navigation>

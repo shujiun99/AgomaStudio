@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHelpName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/textView38"
+            app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textView38"
+            app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+        <TextView
+            android:id="@+id/tvHelpDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/tvHelpName"
+            app:layout_constraintTop_toTopOf="@+id/textView42" />
+
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/help"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHelpDes" />
+
+        <TextView
+            android:id="@+id/eventHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/event"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textView42"
+            app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+        <Spinner
+            android:id="@+id/spEvent"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/eventHide"
+            app:layout_constraintStart_toStartOf="@+id/tvHelpDes"
+            app:layout_constraintTop_toTopOf="@+id/eventHide"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/confirmEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="33dp"
+            android:text="@string/confirm"
+            app:layout_constraintBottom_toBottomOf="@+id/btnCreateEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spEvent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btnCreateEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:text="Create Event"
+            app:layout_constraintEnd_toStartOf="@+id/confirmEvent"
+            app:layout_constraintTop_toBottomOf="@+id/spEvent" />
+
+        <TextView
+            android:id="@+id/tvEventHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/eventHide"
+            app:layout_constraintStart_toStartOf="@+id/tvHelpDes"
+            app:layout_constraintTop_toTopOf="@+id/eventHide" />
+
+        <Button
+            android:id="@+id/UpdateEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:text="Change Event"
+            app:layout_constraintEnd_toStartOf="@+id/btnEnd"
+            app:layout_constraintTop_toBottomOf="@+id/tvEventHelp" />
+
+        <Button
+            android:id="@+id/btnEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="33dp"
+            android:text="End"
+            app:layout_constraintBottom_toBottomOf="@+id/UpdateEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/UpdateEvent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

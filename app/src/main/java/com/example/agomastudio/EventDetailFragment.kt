@@ -17,6 +17,8 @@ import com.bumptech.glide.Glide
 import com.example.agomastudio.Data.Event
 import com.example.agomastudio.databinding.FragmentEventDetailBinding
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 
@@ -25,6 +27,8 @@ class EventDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentEventDetailBinding
     private var imgUr : String = ""
+    val firebaseUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val userId = firebaseUser?.uid
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,12 +75,19 @@ class EventDetailFragment : Fragment() {
                     binding.tvGetTime.text = time.toString()
                     binding.tvGetDate.text = date.toString()
                     binding.tvGetAddress.text = address.toString()
-                    if(it.child("providerId").value != "providerA"){
+                    if(it.child("providerId").value != userId){
                         binding.btnUpdate.visibility = View.GONE
                         binding.btnDelete.visibility = View.GONE
+                        binding.btnOKUList.visibility = View.GONE
                     }
                 }
             }
+        }
+
+        binding.btnOKUList.setOnClickListener {
+            val id: String = ids
+            val bundle = bundleOf(Pair("id",id))
+            Navigation.findNavController(it).navigate(R.id.providerEventOListFragment,bundle)
         }
 
         binding.btnDelete.setOnClickListener {

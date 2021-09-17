@@ -34,6 +34,7 @@ class RegisterProviderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterProviderBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()

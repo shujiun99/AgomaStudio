@@ -33,6 +33,8 @@ class RegisterOKUActivity : AppCompatActivity() {
         binding = ActivityRegisterOkuactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         auth = FirebaseAuth.getInstance()
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("OKU")

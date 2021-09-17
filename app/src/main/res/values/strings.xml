@@ -42,6 +42,19 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="gender">Gender</string>
-    <string name="age">age</string>
+    <string name="age">Age</string>
     <string name="logout">Logout</string>
+    <string name="oku_list">OKU List</string>
+    <string name="agoma_studio_one_stop_info_center_for_oku">Agoma Studio One Stop Info Center for OKU</string>
+    <string name="provider_register">Provider Register</string>
+    <string name="oku_register">OKU Register</string>
+    <string name="login">Login</string>
+    <string name="user_register">User Register</string>
+    <string name="confirm">Confirm</string>
+    <string name="end_help">Confirm End Help</string>
+    <string name="end_message">If the Help End cannot change, confirm to end?</string>
+    <string name="pending">Pending</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
+
 </resources>

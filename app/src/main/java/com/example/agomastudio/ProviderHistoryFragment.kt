@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agomastudio.Data.Event
 import com.example.agomastudio.databinding.FragmentProviderHistoryBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import java.time.LocalDate
 
@@ -19,6 +21,8 @@ class ProviderHistoryFragment : Fragment() {
     private lateinit var newArrayList: ArrayList<Event>
     private lateinit var binding: FragmentProviderHistoryBinding
     private lateinit var dbref: DatabaseReference
+    val firebaseUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val userId = firebaseUser?.uid
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,12 +47,12 @@ class ProviderHistoryFragment : Fragment() {
                             for(eventSnapshot in snapshot.children){
                                 val event = eventSnapshot.getValue(Event::class.java)
                                 if(event?.status == status){
-                                    if(event.providerId == "providerA"){
+                                    if(event.providerId == userId){
                                         newArrayList.add(event!!)
                                     }
                                 }
                                 if(status == "All"){
-                                    if(event?.providerId == "providerA"){
+                                    if(event?.providerId == userId){
                                         newArrayList.add(event!!)
                                     }
                                 }
@@ -75,7 +79,7 @@ class ProviderHistoryFragment : Fragment() {
                     Log.i("My","come in")
                     for(eventSnapshot in snapshot.children){
                         val event = eventSnapshot.getValue(Event::class.java)
-                        if(event?.providerId == "providerA"){
+                        if(event?.providerId == userId){
                             newArrayList.add(event!!)
                         }
                     }

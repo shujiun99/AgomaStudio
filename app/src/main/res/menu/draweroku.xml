@@ -5,8 +5,12 @@
     tools:showIn="navigation_view">
     <item
         android:id="@+id/OKUEventFragment"
-        android:title="Event"
+        android:title="@string/event"
         android:checkable="true"/>
+
+    <item
+        android:id="@+id/OKUProfileFragment"
+        android:title="@string/profile"/>
 
     <item
         android:id="@+id/Logout"

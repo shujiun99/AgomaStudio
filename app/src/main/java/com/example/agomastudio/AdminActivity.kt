@@ -19,6 +19,7 @@ class AdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdminBinding
     private val nav by lazy { supportFragmentManager.findFragmentById(R.id.hostadmin)!!.findNavController() }
     private lateinit var abc : AppBarConfiguration
+    private lateinit var auth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,11 @@ class AdminActivity : AppCompatActivity() {
             setOf(R.id.adminEventFragment, R.id.adminHelpFragment,R.id.adminServiceFragment),
             binding.drawerAdminLayout
         )
+        binding.navAdminView.menu.findItem(R.id.Logout).setOnMenuItemClickListener {
+            auth.signOut()
+            finish()
+            true
+        }
 
         setupActionBarWithNavController(nav, abc)
         binding.navAdminView.setupWithNavController(nav)

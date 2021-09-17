@@ -5,142 +5,163 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="122dp"
             android:layout_height="126dp"
-            android:layout_marginStart="36dp"
             android:layout_marginTop="32dp"
             android:src="@drawable/photo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
+            android:contentDescription="TODO" />
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/name"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+        <ScrollView
+            android:id="@+id/srclView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="145dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck">
 
-        <TextView
-            android:id="@+id/tvproGetName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/textView21"
-            app:layout_constraintStart_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toTopOf="@+id/textView21"
-            app:layout_constraintVertical_bias="1.0" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Username"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/name"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvGetPuserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/textView11"
-            app:layout_constraintStart_toStartOf="@+id/tvproGetName"
-            app:layout_constraintTop_toTopOf="@+id/textView11" />
+                <TextView
+                    android:id="@+id/tvproGetName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="52dp"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                    app:layout_constraintStart_toEndOf="@+id/textView21"
+                    app:layout_constraintTop_toTopOf="@+id/textView21"
+                    app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Contact"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
-        <TextView
-            android:id="@+id/tvGetpContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/textView13"
-            app:layout_constraintStart_toStartOf="@+id/tvGetPuserName"
-            app:layout_constraintTop_toTopOf="@+id/textView13" />
+                <TextView
+                    android:id="@+id/tvGetPuserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                    app:layout_constraintStart_toStartOf="@+id/tvproGetName"
+                    app:layout_constraintTop_toTopOf="@+id/textView11" />
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:text="Website"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/contact"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-        <TextView
-            android:id="@+id/tvPGetWebsite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/textView15"
-            app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toTopOf="@+id/textView15" />
+                <TextView
+                    android:id="@+id/tvGetpContact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                    app:layout_constraintStart_toStartOf="@+id/tvGetPuserName"
+                    app:layout_constraintTop_toTopOf="@+id/textView13" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Address"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/website"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-        <TextView
-            android:id="@+id/tvGetpAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/textView17"
-            app:layout_constraintStart_toStartOf="@+id/tvPGetWebsite"
-            app:layout_constraintTop_toTopOf="@+id/textView17" />
+                <TextView
+                    android:id="@+id/tvPGetWebsite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                    app:layout_constraintStart_toStartOf="@+id/tvGetpContact"
+                    app:layout_constraintTop_toTopOf="@+id/textView15" />
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Main Objective"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/address"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView15"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-        <TextView
-            android:id="@+id/tvGetPObject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/textView19"
-            app:layout_constraintStart_toStartOf="@+id/tvGetpAddress"
-            app:layout_constraintTop_toTopOf="@+id/textView19" />
+                <TextView
+                    android:id="@+id/tvGetpAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/textView17"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/main_objective"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/tvGetpAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGetpAddress" />
+
+                <TextView
+                    android:id="@+id/tvGetPObject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/textView19"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

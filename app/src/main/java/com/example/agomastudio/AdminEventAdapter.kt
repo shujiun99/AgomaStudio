@@ -14,27 +14,20 @@ import com.bumptech.glide.Glide
 import com.example.agomastudio.Data.Event
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
-import com.squareup.picasso.Picasso
 
-class EventAdapter(private val eventList:ArrayList<Event>):
-    RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
-
-    private lateinit var mListener : onItemClickListener
-    interface onItemClickListener{
-        fun onItemClick(position: Int)
-    }
-
-    fun setOnClickListener(listener: onItemClickListener){
-        mListener = listener
-    }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+class AdminEventAdapter (private val eventList:ArrayList<Event>):
+    RecyclerView.Adapter<AdminEventAdapter.MyViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AdminEventAdapter.MyViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.event_item, parent,false)
-        return MyViewHolder(view)
+            .inflate(R.layout.admin_event, parent,false)
+        return AdminEventAdapter.MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: EventAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdminEventAdapter.MyViewHolder, position: Int) {
         val item = eventList[position]
         holder.name.text = item.name
         holder.date.text = item.date
@@ -43,7 +36,7 @@ class EventAdapter(private val eventList:ArrayList<Event>):
         Log.i("My", "meme" + item.photo)
         val storageReference = FirebaseStorage.getInstance().reference.child("images/$imgUri")
         Log.i("My",storageReference.toString())
-        storageReference.downloadUrl.addOnSuccessListener(object: OnSuccessListener<Uri>{
+        storageReference.downloadUrl.addOnSuccessListener(object: OnSuccessListener<Uri> {
             override fun onSuccess(uri: Uri?) {
                 Log.i("My","load")
                 Glide.with(holder.photo.context).load(uri).into(holder.photo)
@@ -52,7 +45,7 @@ class EventAdapter(private val eventList:ArrayList<Event>):
         holder.itemView.setOnClickListener(){
             val id: String = item.id
             val bundle = bundleOf(Pair("id",id))
-            Navigation.findNavController(it).navigate(R.id.eventDetailFragment,bundle)
+            Navigation.findNavController(it).navigate(R.id.adminEventDetailFragment,bundle)
         }
     }
 
@@ -62,10 +55,9 @@ class EventAdapter(private val eventList:ArrayList<Event>):
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val root = itemView
-        val photo : ImageView = itemView.findViewById(R.id.imgPhoto)
-        val name : TextView = itemView.findViewById(R.id.txtAuthor)
-        val date : TextView = itemView.findViewById(R.id.tvShowDate)
+        val photo : ImageView = itemView.findViewById(R.id.imgEventadmin)
+        val name : TextView = itemView.findViewById(R.id.eventadminName)
+        val date : TextView = itemView.findViewById(R.id.tvadmineventDate)
 
     }
-
 }

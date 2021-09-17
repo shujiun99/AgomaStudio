@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
@@ -19,9 +20,15 @@ import com.bumptech.glide.Glide
 import com.example.agomastudio.Data.Event
 import com.example.agomastudio.databinding.FragmentUpdateEventBinding
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,6 +42,8 @@ class UpdateEventFragment : Fragment() {
     private var status: String = ""
     private var id: String = ""
     private var pic = false
+    val firebaseUser: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val userId = firebaseUser?.uid
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,16 +88,21 @@ class UpdateEventFragment : Fragment() {
                     eN.setText(names.toString())
                     val eA = binding.edadd
                     eA.setText(address.toString())
-                    val array = resources.getStringArray(R.array.EventCategories)
-                    for(a in array){
-                        var i = 0
-                        if(a.toString().equals(cate)){
-                            binding.spinCategory.setSelection(i)
-                        }
-                        else{
-                            i++
+
+                    CoroutineScope(Main).launch {
+                        val array = resources.getStringArray(R.array.EventCategories)
+                        delay(1000)
+                        for(a in array){
+                            var i = 0
+                            if(a.toString().equals(cate)){
+                                binding.spinCategory.setSelection(i)
+                            }
+                            else{
+                                i++
+                            }
                         }
                     }
+
                     binding.edTime.text = time.toString()
                     binding.EdDate.text = date.toString()
                 }
@@ -216,8 +230,7 @@ class UpdateEventFragment : Fragment() {
                 return@setOnClickListener
             }
             val photo = fileName.toString()
-            val providerId = "providerA"
-            val event = Event(id,name,date,time,description,category,status,photo,longitude,latitude,address,providerId)
+            val event = Event(id,name,date,time,description,category,status,photo,longitude,latitude,address,userId.toString())
             myRef.child(id).setValue(event)
             requireActivity().onBackPressed()
 
@@ -237,6 +250,15 @@ class UpdateEventFragment : Fragment() {
             binding.imageEvent.setImageURI(imgUriu)
             pic = true
         }
+    }
+
+    private fun getIndex(spinner: Spinner, myString: String): Int {
+        for (i in 0 until spinner.count) {
+            if (spinner.getItemAtPosition(i).toString().equals(myString, ignoreCase = true)) {
+                return i
+            }
+        }
+        return 0
     }
 
     companion object {

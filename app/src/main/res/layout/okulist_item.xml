@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     android:padding="4dp">
 
     <ImageView
-        android:id="@+id/imgPhoto"
+        android:id="@+id/imgPOKU"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:scaleType="centerCrop"
@@ -16,26 +17,17 @@
         tools:srcCompat="@drawable/photo" />
 
     <TextView
-        android:id="@+id/txtAuthor"
+        android:id="@+id/txtOKUName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="15dp"
         android:background="@color/white"
         android:padding="2dp"
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/imgPhoto"
-        app:layout_constraintTop_toTopOf="@+id/imgPhoto"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgPOKU"
+        app:layout_constraintTop_toTopOf="@+id/imgPOKU"
         tools:text="XXX" />
-
-    <TextView
-        android:id="@+id/tvShowDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="xxxx"
-        app:layout_constraintStart_toStartOf="@+id/txtAuthor"
-        app:layout_constraintTop_toBottomOf="@+id/txtAuthor" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

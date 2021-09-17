@@ -20,6 +20,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/name"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="128dp"
                 android:text="@string/date"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -54,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/time"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/edName"
                 app:layout_constraintTop_toBottomOf="@+id/edName" />
@@ -82,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/category"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/EdDate"
                 app:layout_constraintTop_toBottomOf="@+id/EdDate" />
 
@@ -102,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/description"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/spinCategory"
                 app:layout_constraintTop_toBottomOf="@+id/spinCategory" />
 
@@ -125,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/photo"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/edadd"
                 app:layout_constraintTop_toBottomOf="@+id/edadd" />
 
@@ -143,6 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Address"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/edtDescription"
                 app:layout_constraintTop_toBottomOf="@+id/edtDescription" />
 
